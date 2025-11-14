@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCC Generator</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>PCC Generator for RouterOS</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Generate PCC Configuration</h2>
+            <form id="pcc-form">
+                <div>
+                    <label for="src-ip">Source IP Address:</label>
+                    <input type="text" id="src-ip" name="src-ip" placeholder="Enter Source IP" required>
+                </div>
+                <div>
+                    <label for="dst-ip">Destination IP Address:</label>
+                    <input type="text" id="dst-ip" name="dst-ip" placeholder="Enter Destination IP" required>
+                </div>
+                <div>
+                    <label for="interface">Interface:</label>
+                    <input type="text" id="interface" name="interface" placeholder="Enter Interface (e.g., ether1)" required>
+                </div>
+                <div>
+                    <label for="gateway">Gateway IP:</label>
+                    <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" required>
+                </div>
+                <div>
+                    <label for="mark-routing">Routing Mark:</label>
+                    <input type="text" id="mark-routing" name="mark-routing" placeholder="Enter Routing Mark" required>
+                </div>
+                <button type="submit">Generate Config</button>
+            </form>
+            <div id="config-output">
+                <h3>Generated Config:</h3>
+                <textarea id="output" rows="10" cols="50" readonly></textarea>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 RouterOS Tools. All rights reserved.</p>
+    </footer>
+    <script src="../assets/js/pcc-generator.js"></script>
+</body>
+</html>
