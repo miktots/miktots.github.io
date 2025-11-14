@@ -1,14 +1,66 @@
 <section id="generate">
     <h2>Generator Load Balancing PCC Premium</h2>
+
     <form id="loadBalancingForm">
+        <label for="routerOS">Pilih Versi RouterOS:</label>
+        <select id="routerOS" name="routerOS" required>
+            <option value="6">RouterOS v6</option>
+            <option value="7">RouterOS v7</option>
+        </select>
+
+        <div id="version-specific-options">
+            <!-- Dynamic fields will be added here based on RouterOS version -->
+        </div>
+
         <label for="ispCount">Jumlah ISP:</label>
         <input type="number" id="ispCount" name="ispCount" min="1" max="10" required>
-        <label for="routerOS">RouterOS Version:</label>
-        <input type="text" id="routerOS" name="routerOS" value="v7" required>
+
         <label for="bandwidth">Ratio Bandwidth:</label>
         <input type="checkbox" id="bandwidth" name="bandwidth">
+
         <label for="recursive">Recursive:</label>
         <input type="checkbox" id="recursive" name="recursive">
+
         <button type="submit">Generate Script</button>
     </form>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const routerOSSelect = document.getElementById('routerOS');
+        routerOSSelect.addEventListener('change', updateVersionSpecificFields);
+
+        // Initialize fields based on default RouterOS selection
+        updateVersionSpecificFields();
+
+        function updateVersionSpecificFields() {
+            const version = routerOSSelect.value;
+            const versionSpecificOptions = document.getElementById('version-specific-options');
+            versionSpecificOptions.innerHTML = ''; // Clear previous fields
+
+            if (version === '6') {
+                // If RouterOS v6 is selected
+                const optionV6 = document.createElement('div');
+                optionV6.innerHTML = `
+                    <label for="v6Option">Pilih Opsi untuk RouterOS v6:</label>
+                    <select id="v6Option" name="v6Option">
+                        <option value="option1">Opsi 1</option>
+                        <option value="option2">Opsi 2</option>
+                    </select>
+                `;
+                versionSpecificOptions.appendChild(optionV6);
+            } else if (version === '7') {
+                // If RouterOS v7 is selected
+                const optionV7 = document.createElement('div');
+                optionV7.innerHTML = `
+                    <label for="v7Option">Pilih Opsi untuk RouterOS v7:</label>
+                    <select id="v7Option" name="v7Option">
+                        <option value="optionA">Opsi A</option>
+                        <option value="optionB">Opsi B</option>
+                    </select>
+                `;
+                versionSpecificOptions.appendChild(optionV7);
+            }
+        }
+    });
+</script>
