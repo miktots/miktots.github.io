@@ -17,26 +17,54 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
+                <!-- Dropdown for RouterOS Version -->
+                <div>
+                    <label for="routeros-version">RouterOS Version:</label>
+                    <select id="routeros-version" name="routeros-version" required>
+                        <option value="6">RouterOS 6</option>
+                        <option value="7">RouterOS 7</option>
+                    </select>
+                </div>
+
+                <!-- Source IP Address -->
                 <div>
                     <label for="src-ip">Source IP Address:</label>
                     <input type="text" id="src-ip" name="src-ip" placeholder="Enter Source IP" required>
                 </div>
+                
+                <!-- Destination IP Address -->
                 <div>
                     <label for="dst-ip">Destination IP Address:</label>
                     <input type="text" id="dst-ip" name="dst-ip" placeholder="Enter Destination IP" required>
                 </div>
+
+                <!-- Interface -->
                 <div>
                     <label for="interface">Interface:</label>
                     <input type="text" id="interface" name="interface" placeholder="Enter Interface (e.g., ether1)" required>
                 </div>
+
+                <!-- WAN Sources -->
+                <div id="wan-sources">
+                    <label>WAN Sources:</label>
+                    <div class="wan-source">
+                        <input type="text" name="wan-source" placeholder="Enter WAN Source" required>
+                    </div>
+                    <button type="button" id="add-wan-source">Add WAN Source</button>
+                </div>
+
+                <!-- Gateway -->
                 <div>
                     <label for="gateway">Gateway IP:</label>
                     <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" required>
                 </div>
+
+                <!-- Routing Mark -->
                 <div>
                     <label for="mark-routing">Routing Mark:</label>
                     <input type="text" id="mark-routing" name="mark-routing" placeholder="Enter Routing Mark" required>
                 </div>
+
                 <button type="submit">Generate Config</button>
             </form>
             <div id="config-output">
