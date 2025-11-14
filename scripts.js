@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Memuat modul-modul secara dinamis untuk PCC Generator
-    loadModule('header.html', 'header');
+    // Memuat modul-modul secara dinamis untuk PCC Generator dengan path absolut
+    loadModule('/header.html', 'header');
     loadModule('/modules/pcc-generator/form-input.html', 'formInput');
     loadModule('/modules/pcc-generator/script-output.html', 'scriptOutput');
-    loadModule('footer.html', 'footer');
+    loadModule('/footer.html', 'footer');
 
     // Menangani pengiriman formulir
     document.getElementById('loadBalancingForm').addEventListener('submit', generateScript);
