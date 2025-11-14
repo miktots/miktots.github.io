@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
+    <title>MikTools - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Memuat Modul PCC Generator -->
-    <div id="pccGenerator"></div>
+    <!-- Header with breadcrumb and navbar -->
+    <div id="header"></div>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">PCC Generator</li>
+        </ol>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <div id="formInput"></div>
+        <div id="scriptOutput"></div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
 
     <script src="scripts.js"></script>
 </body>
