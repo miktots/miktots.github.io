@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCC Calculator</title>
+    <link rel="stylesheet" href="pcc.css">
+</head>
+<body>
+    <header>
+        <h1>PCC Calculator</h1>
+        <a href="../index.html">Kembali ke Portal</a>
+    </header>
+    
+    <main>
+        <section id="calculator">
+            <h2>Masukkan Konfigurasi</h2>
+            <form id="pcc-form">
+                <label for="connLimit">Jumlah Koneksi:</label>
+                <input type="number" id="connLimit" required>
+
+                <label for="interface">Interface:</label>
+                <select id="interface">
+                    <option value="pppoe-out1">pppoe-out1</option>
+                    <option value="pppoe-out2">pppoe-out2</option>
+                </select>
+
+                <button type="submit">Hitung PCC</button>
+            </form>
+            <div id="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mikrotik Tools</p>
+    </footer>
+
+    <script src="pcc.js"></script>
+</body>
+</html>
