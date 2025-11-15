@@ -17,15 +17,30 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
-                <!-- Basic Configuration -->
+                <!-- Step 1: Bridge LAN and LAN Interface Configuration -->
+                <div class="section-header">
+                    <h3>Bridge LAN and LAN Configuration</h3>
+                </div>
+                <div class="form-row">
+                    <label for="bridge-ip">IP Bridge LAN:</label>
+                    <input type="text" id="bridge-ip" name="bridge-ip" placeholder="e.g., 10.10.10.1/24" required>
+                </div>
+                <div class="form-row">
+                    <label for="ether-interface">Ether Interface for LAN:</label>
+                    <input type="text" id="ether-interface" name="ether-interface" placeholder="e.g., ether2" required>
+                </div>
+
+                <!-- Step 2: Basic Configuration -->
                 <div class="section-header">
                     <h3>Konfigurasi Dasar</h3>
                 </div>
                 <div class="form-row">
                     <label for="jumlah-isp">Jumlah ISP:</label>
                     <select id="jumlah-isp" name="jumlah-isp">
-                        <option value="1">1 ISP</option>
                         <option value="2">2 ISP</option>
+                        <option value="3">3 ISP</option>
+                        <option value="4">4 ISP</option>
+                        <option value="5">5 ISP</option>
                     </select>
                 </div>
                 <div class="form-row">
@@ -36,49 +51,72 @@
                     </select>
                 </div>
 
-                <!-- ISP 1 Configuration -->
+                <!-- Step 3: PCC Type Selection -->
                 <div class="section-header">
-                    <h3>ISP 1</h3>
+                    <h3>Select PCC Type</h3>
                 </div>
                 <div class="form-row">
-                    <label for="interface-isp1">Interface:</label>
-                    <input type="text" id="interface-isp1" name="interface-isp1" placeholder="e.g., ether1" required>
-                </div>
-                <div class="form-row">
-                    <label for="gateway-isp1">Gateway:</label>
-                    <input type="text" id="gateway-isp1" name="gateway-isp1" placeholder="e.g., 192.168.1.1" required>
-                </div>
-                <div class="form-row">
-                    <label for="dns-isp1">DNS:</label>
-                    <input type="text" id="dns-isp1" name="dns-isp1" placeholder="e.g., 1.1.1.1" required>
-                </div>
-                <div class="form-row">
-                    <label for="bandwidth-isp1">Bandwidth (Mbps):</label>
-                    <input type="number" id="bandwidth-isp1" name="bandwidth-isp1" placeholder="e.g., 100" required>
+                    <label for="pcc-type">PCC Type:</label>
+                    <select id="pcc-type" name="pcc-type">
+                        <option value="src-address">PCC Type 1: Source Address</option>
+                        <option value="dst-address">PCC Type 2: Destination Address</option>
+                        <option value="src-dst-address">PCC Type 3: Source & Destination Address</option>
+                        <option value="src-port">PCC Type 4: Source Port</option>
+                        <option value="dst-port">PCC Type 5: Destination Port</option>
+                        <option value="both-address-port">PCC Type 6: Both Address & Port</option>
+                    </select>
                 </div>
 
-                <!-- ISP 2 Configuration -->
-                <div class="section-header">
-                    <h3>ISP 2</h3>
-                </div>
-                <div class="form-row">
-                    <label for="interface-isp2">Interface:</label>
-                    <input type="text" id="interface-isp2" name="interface-isp2" placeholder="e.g., ether2" required>
-                </div>
-                <div class="form-row">
-                    <label for="gateway-isp2">Gateway:</label>
-                    <input type="text" id="gateway-isp2" name="gateway-isp2" placeholder="e.g., 192.168.2.1" required>
-                </div>
-                <div class="form-row">
-                    <label for="dns-isp2">DNS:</label>
-                    <input type="text" id="dns-isp2" name="dns-isp2" placeholder="e.g., 1.1.1.2" required>
-                </div>
-                <div class="form-row">
-                    <label for="bandwidth-isp2">Bandwidth (Mbps):</label>
-                    <input type="number" id="bandwidth-isp2" name="bandwidth-isp2" placeholder="e.g., 100" required>
+                <!-- ISP Configuration (Initial ISP 1 and ISP 2) -->
+                <div id="isp-config-container">
+                    <!-- ISP 1 -->
+                    <div class="isp-config" id="isp-1">
+                        <div class="section-header">
+                            <h3>ISP 1</h3>
+                        </div>
+                        <div class="form-row">
+                            <label for="interface-isp1">Interface:</label>
+                            <input type="text" id="interface-isp1" name="interface-isp1" placeholder="e.g., ether1" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="gateway-isp1">Gateway:</label>
+                            <input type="text" id="gateway-isp1" name="gateway-isp1" placeholder="e.g., 192.168.1.1" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dns-isp1">DNS:</label>
+                            <input type="text" id="dns-isp1" name="dns-isp1" placeholder="e.g., 1.1.1.1" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="bandwidth-isp1">Bandwidth (Mbps):</label>
+                            <input type="number" id="bandwidth-isp1" name="bandwidth-isp1" placeholder="e.g., 100" required>
+                        </div>
+                    </div>
+
+                    <!-- ISP 2 -->
+                    <div class="isp-config" id="isp-2">
+                        <div class="section-header">
+                            <h3>ISP 2</h3>
+                        </div>
+                        <div class="form-row">
+                            <label for="interface-isp2">Interface:</label>
+                            <input type="text" id="interface-isp2" name="interface-isp2" placeholder="e.g., ether2" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="gateway-isp2">Gateway:</label>
+                            <input type="text" id="gateway-isp2" name="gateway-isp2" placeholder="e.g., 192.168.2.1" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="dns-isp2">DNS:</label>
+                            <input type="text" id="dns-isp2" name="dns-isp2" placeholder="e.g., 1.1.1.2" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="bandwidth-isp2">Bandwidth (Mbps):</label>
+                            <input type="number" id="bandwidth-isp2" name="bandwidth-isp2" placeholder="e.g., 100" required>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Advanced Features -->
+                <!-- Step 4: Advanced Features -->
                 <div class="section-header">
                     <h3>Fitur Advanced</h3>
                 </div>
@@ -97,13 +135,19 @@
                     </select>
                 </div>
 
+                <!-- Add More ISPs Button -->
+                <div class="form-row">
+                    <button type="button" id="add-isp-btn">Add More ISP</button>
+                </div>
+
                 <!-- Submit Button -->
-                <button type="submit">Generate Config</button>
+                <button type="submit" id="generate-btn">Generate Config</button>
             </form>
 
             <div id="config-output">
                 <h3>Generated Config:</h3>
                 <textarea id="output" rows="10" cols="50" readonly></textarea>
+                <button id="copy-btn">Copy to Clipboard</button>
             </div>
         </section>
     </main>
