@@ -17,7 +17,6 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
-                <!-- Step 1: Bridge LAN and LAN Interface Configuration -->
                 <div class="section-header">
                     <h3>Bridge LAN and LAN Configuration</h3>
                 </div>
@@ -30,7 +29,6 @@
                     <input type="text" id="ether-interface" name="ether-interface" placeholder="e.g., ether2" required>
                 </div>
 
-                <!-- Step 2: Basic Configuration -->
                 <div class="section-header">
                     <h3>Konfigurasi Dasar</h3>
                 </div>
@@ -51,7 +49,6 @@
                     </select>
                 </div>
 
-                <!-- Step 3: PCC Type Selection -->
                 <div class="section-header">
                     <h3>Select PCC Type</h3>
                 </div>
@@ -67,9 +64,7 @@
                     </select>
                 </div>
 
-                <!-- ISP Configuration (Initial ISP 1 and ISP 2) -->
                 <div id="isp-config-container">
-                    <!-- ISP 1 -->
                     <div class="isp-config" id="isp-1">
                         <div class="section-header">
                             <h3>ISP 1</h3>
@@ -92,7 +87,6 @@
                         </div>
                     </div>
 
-                    <!-- ISP 2 -->
                     <div class="isp-config" id="isp-2">
                         <div class="section-header">
                             <h3>ISP 2</h3>
@@ -116,7 +110,6 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Advanced Features -->
                 <div class="section-header">
                     <h3>Fitur Advanced</h3>
                 </div>
@@ -135,15 +128,12 @@
                     </select>
                 </div>
 
-                <!-- Add More ISPs Button -->
                 <div class="form-row">
                     <button type="button" id="add-isp-btn">Add More ISP</button>
                 </div>
 
-                <!-- Submit Button -->
                 <button type="submit" id="generate-btn">Generate Config</button>
             </form>
-
             <div id="config-output">
                 <h3>Generated Config:</h3>
                 <textarea id="output" rows="10" cols="50" readonly></textarea>
@@ -154,7 +144,6 @@
     <footer>
         <p>&copy; 2025 RouterOS Tools. All rights reserved.</p>
     </footer>
-
     <script src="../assets/js/pcc-generator.js"></script>
 </body>
 </html>
