@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCC Generator</title>
+    <title>PCC Generator for RouterOS</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
-                <!-- Step 1: RouterOS Version Dropdown -->
+                <!-- Step 1: RouterOS Version -->
                 <div>
                     <label for="routeros-version">RouterOS Version:</label>
                     <select id="routeros-version" name="routeros-version" required>
@@ -26,25 +26,25 @@
                     </select>
                 </div>
 
-                <!-- Step 2: IP WAN/Gateway -->
+                <!-- Step 2: WAN IP/Gateway -->
                 <div>
-                    <label for="src-ip">IP WAN / Gateway:</label>
-                    <input type="text" id="src-ip" name="src-ip" placeholder="Enter WAN IP/Gateway" required>
+                    <label for="wan-ip">WAN IP / Gateway:</label>
+                    <input type="text" id="wan-ip" name="wan-ip" placeholder="Enter WAN IP or Gateway" required>
                 </div>
 
-                <!-- Step 3: IP LAN/Bridge -->
+                <!-- Step 3: LAN IP / Bridge-LAN -->
                 <div>
-                    <label for="dst-ip">IP LAN / Bridge-LAN:</label>
-                    <input type="text" id="dst-ip" name="dst-ip" placeholder="Enter LAN IP / Bridge" required>
+                    <label for="lan-ip">LAN IP / Bridge-LAN:</label>
+                    <input type="text" id="lan-ip" name="lan-ip" placeholder="Enter LAN IP or Bridge" required>
                 </div>
 
-                <!-- Step 4: Interface -->
+                <!-- Step 4: Interface for LAN -->
                 <div>
-                    <label for="interface">Interface (e.g., ether1):</label>
+                    <label for="interface">LAN Interface (e.g., ether1):</label>
                     <input type="text" id="interface" name="interface" placeholder="Enter Interface" required>
                 </div>
 
-                <!-- Step 5: WAN Sources -->
+                <!-- Step 5: WAN Source IPs (Dynamic) -->
                 <div id="wan-sources">
                     <label>WAN Sources:</label>
                     <div class="wan-source">
@@ -53,20 +53,21 @@
                     <button type="button" id="add-wan-source">Add WAN Source</button>
                 </div>
 
-                <!-- Step 6: Gateway -->
+                <!-- Step 6: Gateway IP -->
                 <div>
-                    <label for="gateway">Gateway IP (e.g., 192.168.100.1):</label>
+                    <label for="gateway">Gateway IP:</label>
                     <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" required>
                 </div>
 
                 <!-- Step 7: Routing Mark -->
                 <div>
-                    <label for="mark-routing">Routing Mark (e.g., route1):</label>
-                    <input type="text" id="mark-routing" name="mark-routing" placeholder="Enter Routing Mark" required>
+                    <label for="routing-mark">Routing Mark:</label>
+                    <input type="text" id="routing-mark" name="routing-mark" placeholder="Enter Routing Mark" required>
                 </div>
 
                 <button type="submit">Generate Config</button>
             </form>
+
             <div id="config-output">
                 <h3>Generated Config:</h3>
                 <textarea id="output" rows="10" cols="50" readonly></textarea>
@@ -76,6 +77,7 @@
     <footer>
         <p>&copy; 2025 RouterOS Tools. All rights reserved.</p>
     </footer>
+
     <script src="../assets/js/pcc-generator.js"></script>
 </body>
 </html>
