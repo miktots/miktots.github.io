@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCC Generator for RouterOS</title>
+    <title>PCC Generator</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -26,19 +26,19 @@
                     </select>
                 </div>
 
-                <!-- Step 2: WAN IP/Gateway -->
+                <!-- Step 2: Source IP (WAN IP) -->
                 <div>
-                    <label for="wan-ip">WAN IP / Gateway:</label>
-                    <input type="text" id="wan-ip" name="wan-ip" placeholder="Enter WAN IP or Gateway" required>
+                    <label for="wan-ip">WAN IP / Gateway (Source IP):</label>
+                    <input type="text" id="wan-ip" name="wan-ip" placeholder="Enter WAN IP / Gateway" required>
                 </div>
 
-                <!-- Step 3: LAN IP / Bridge-LAN -->
+                <!-- Step 3: IP LAN / Bridge -->
                 <div>
                     <label for="lan-ip">LAN IP / Bridge-LAN:</label>
-                    <input type="text" id="lan-ip" name="lan-ip" placeholder="Enter LAN IP or Bridge" required>
+                    <input type="text" id="lan-ip" name="lan-ip" placeholder="Enter LAN IP / Bridge" required>
                 </div>
 
-                <!-- Step 4: Interface for LAN -->
+                <!-- Step 4: Interface -->
                 <div>
                     <label for="interface">LAN Interface (e.g., ether1):</label>
                     <input type="text" id="interface" name="interface" placeholder="Enter Interface" required>
@@ -53,10 +53,10 @@
                     <button type="button" id="add-wan-source">Add WAN Source</button>
                 </div>
 
-                <!-- Step 6: Gateway IP -->
+                <!-- Step 6: Gateway -->
                 <div>
-                    <label for="gateway">Gateway IP:</label>
-                    <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" required>
+                    <label for="gateway">Gateway IP (auto-filled based on Source IP):</label>
+                    <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" disabled>
                 </div>
 
                 <!-- Step 7: Routing Mark -->

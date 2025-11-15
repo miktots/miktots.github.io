@@ -5,12 +5,12 @@ document.getElementById('pcc-form').addEventListener('submit', function(event) {
     var routerosVersion = document.getElementById('routeros-version').value;
     
     // Step 2: Get WAN IP/Gateway and LAN IP
-    var wanIp = document.getElementById('wan-ip').value;
-    var lanIp = document.getElementById('lan-ip').value;
+    var wanIp = document.getElementById('wan-ip').value; // WAN IP / Gateway
+    var lanIp = document.getElementById('lan-ip').value; // LAN IP / Bridge-LAN
     
     // Step 3: Get LAN Interface and Gateway IP
     var interface = document.getElementById('interface').value;
-    var gateway = document.getElementById('gateway').value;
+    var gateway = document.getElementById('gateway').value; // Automatically populated from WAN IP
     var routingMark = document.getElementById('routing-mark').value;
 
     // Step 4: Get WAN Source IPs (allowing dynamic addition)
@@ -20,6 +20,9 @@ document.getElementById('pcc-form').addEventListener('submit', function(event) {
         wanSources.push(input.value);
     });
 
+    // Set Gateway to the same value as WAN IP
+    document.getElementById('gateway').value = wanIp;
+
     var config = '';
     if (routerosVersion === '6') {
         config += "# RouterOS 6 Configuration\n";
@@ -27,7 +30,7 @@ document.getElementById('pcc-form').addEventListener('submit', function(event) {
         config += "# RouterOS 7 Configuration\n";
     }
 
-    // Step 5: Configure Mangle Rules for PCC
+    // Step 5: Configure Mangle Rules for PCC (based on WAN IP and LAN IP)
     config += `
 /ip firewall mangle
 add chain=prerouting src-address=${wanIp} dst-address=${lanIp} action=mark-connection new-connection-mark=conn1 passthrough=yes
