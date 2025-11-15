@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCC Generator</title>
+    <title>PCC Generator for RouterOS</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -17,8 +17,18 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
-                <!-- Step 1: RouterOS Version -->
-                <div>
+                <!-- Basic Configuration -->
+                <div class="section-header">
+                    <h3>Konfigurasi Dasar</h3>
+                </div>
+                <div class="form-row">
+                    <label for="jumlah-isp">Jumlah ISP:</label>
+                    <select id="jumlah-isp" name="jumlah-isp">
+                        <option value="1">1 ISP</option>
+                        <option value="2">2 ISP</option>
+                    </select>
+                </div>
+                <div class="form-row">
                     <label for="routeros-version">RouterOS Version:</label>
                     <select id="routeros-version" name="routeros-version" required>
                         <option value="6">RouterOS 6</option>
@@ -26,45 +36,68 @@
                     </select>
                 </div>
 
-                <!-- Step 2: Source IP (WAN IP) -->
-                <div>
-                    <label for="wan-ip">WAN IP / Gateway (Source IP):</label>
-                    <input type="text" id="wan-ip" name="wan-ip" placeholder="Enter WAN IP / Gateway" required>
+                <!-- ISP 1 Configuration -->
+                <div class="section-header">
+                    <h3>ISP 1</h3>
+                </div>
+                <div class="form-row">
+                    <label for="interface-isp1">Interface:</label>
+                    <input type="text" id="interface-isp1" name="interface-isp1" placeholder="e.g., ether1" required>
+                </div>
+                <div class="form-row">
+                    <label for="gateway-isp1">Gateway:</label>
+                    <input type="text" id="gateway-isp1" name="gateway-isp1" placeholder="e.g., 192.168.1.1" required>
+                </div>
+                <div class="form-row">
+                    <label for="dns-isp1">DNS:</label>
+                    <input type="text" id="dns-isp1" name="dns-isp1" placeholder="e.g., 1.1.1.1" required>
+                </div>
+                <div class="form-row">
+                    <label for="bandwidth-isp1">Bandwidth (Mbps):</label>
+                    <input type="number" id="bandwidth-isp1" name="bandwidth-isp1" placeholder="e.g., 100" required>
                 </div>
 
-                <!-- Step 3: IP LAN / Bridge -->
-                <div>
-                    <label for="lan-ip">LAN IP / Bridge-LAN:</label>
-                    <input type="text" id="lan-ip" name="lan-ip" placeholder="Enter LAN IP / Bridge" required>
+                <!-- ISP 2 Configuration -->
+                <div class="section-header">
+                    <h3>ISP 2</h3>
+                </div>
+                <div class="form-row">
+                    <label for="interface-isp2">Interface:</label>
+                    <input type="text" id="interface-isp2" name="interface-isp2" placeholder="e.g., ether2" required>
+                </div>
+                <div class="form-row">
+                    <label for="gateway-isp2">Gateway:</label>
+                    <input type="text" id="gateway-isp2" name="gateway-isp2" placeholder="e.g., 192.168.2.1" required>
+                </div>
+                <div class="form-row">
+                    <label for="dns-isp2">DNS:</label>
+                    <input type="text" id="dns-isp2" name="dns-isp2" placeholder="e.g., 1.1.1.2" required>
+                </div>
+                <div class="form-row">
+                    <label for="bandwidth-isp2">Bandwidth (Mbps):</label>
+                    <input type="number" id="bandwidth-isp2" name="bandwidth-isp2" placeholder="e.g., 100" required>
                 </div>
 
-                <!-- Step 4: Interface -->
-                <div>
-                    <label for="interface">LAN Interface (e.g., ether1):</label>
-                    <input type="text" id="interface" name="interface" placeholder="Enter Interface" required>
+                <!-- Advanced Features -->
+                <div class="section-header">
+                    <h3>Fitur Advanced</h3>
+                </div>
+                <div class="form-row">
+                    <label for="recursive">Recursive:</label>
+                    <select id="recursive" name="recursive">
+                        <option value="ON">ON</option>
+                        <option value="OFF">OFF</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="bandwidth-ratio">Bandwidth Ratio:</label>
+                    <select id="bandwidth-ratio" name="bandwidth-ratio">
+                        <option value="ON">ON</option>
+                        <option value="OFF">OFF</option>
+                    </select>
                 </div>
 
-                <!-- Step 5: WAN Source IPs (Dynamic) -->
-                <div id="wan-sources">
-                    <label>WAN Sources:</label>
-                    <div class="wan-source">
-                        <input type="text" name="wan-source" placeholder="Enter WAN Source (e.g., 192.168.1.1)" required>
-                    </div>
-                    <button type="button" id="add-wan-source">Add WAN Source</button>
-                </div>
-
-                <!-- Step 6: Gateway -->
-                <div>
-                    <label for="gateway">Gateway IP (auto-filled based on Source IP):</label>
-                    <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" disabled>
-                </div>
-
-                <!-- Step 7: Routing Mark -->
-                <div>
-                    <label for="routing-mark">Routing Mark:</label>
-                    <input type="text" id="routing-mark" name="routing-mark" placeholder="Enter Routing Mark" required>
-                </div>
-
+                <!-- Submit Button -->
                 <button type="submit">Generate Config</button>
             </form>
 
