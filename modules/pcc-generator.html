@@ -17,7 +17,7 @@
         <section>
             <h2>Generate PCC Configuration</h2>
             <form id="pcc-form">
-                <!-- RouterOS Version Dropdown -->
+                <!-- Step 1: RouterOS Version Dropdown -->
                 <div>
                     <label for="routeros-version">RouterOS Version:</label>
                     <select id="routeros-version" name="routeros-version" required>
@@ -26,25 +26,25 @@
                     </select>
                 </div>
 
-                <!-- IP WAN/Gateway -->
+                <!-- Step 2: IP WAN/Gateway -->
                 <div>
                     <label for="src-ip">IP WAN / Gateway:</label>
                     <input type="text" id="src-ip" name="src-ip" placeholder="Enter WAN IP/Gateway" required>
                 </div>
 
-                <!-- IP LAN/Bridge -->
+                <!-- Step 3: IP LAN/Bridge -->
                 <div>
                     <label for="dst-ip">IP LAN / Bridge-LAN:</label>
                     <input type="text" id="dst-ip" name="dst-ip" placeholder="Enter LAN IP / Bridge" required>
                 </div>
 
-                <!-- Interface -->
+                <!-- Step 4: Interface -->
                 <div>
                     <label for="interface">Interface (e.g., ether1):</label>
                     <input type="text" id="interface" name="interface" placeholder="Enter Interface" required>
                 </div>
 
-                <!-- WAN Sources -->
+                <!-- Step 5: WAN Sources -->
                 <div id="wan-sources">
                     <label>WAN Sources:</label>
                     <div class="wan-source">
@@ -53,13 +53,13 @@
                     <button type="button" id="add-wan-source">Add WAN Source</button>
                 </div>
 
-                <!-- Gateway -->
+                <!-- Step 6: Gateway -->
                 <div>
                     <label for="gateway">Gateway IP (e.g., 192.168.100.1):</label>
                     <input type="text" id="gateway" name="gateway" placeholder="Enter Gateway IP" required>
                 </div>
 
-                <!-- Routing Mark -->
+                <!-- Step 7: Routing Mark -->
                 <div>
                     <label for="mark-routing">Routing Mark (e.g., route1):</label>
                     <input type="text" id="mark-routing" name="mark-routing" placeholder="Enter Routing Mark" required>
